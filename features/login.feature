@@ -4,7 +4,7 @@ Background:
    Given the user is on login page
 
 Scenario: The one where user fails to login without filling out the login
-   When the user leaves the username blank and enters the password "secret_sauce"
+   When the user leaves the username blank and enters the password "<password>"
    And clicks on Login button
    Then the user must remain on login page displaying a message "<errorMessage>"
 
