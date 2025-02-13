@@ -1,26 +1,33 @@
 const BasePage = require("./base.page.js");
 
 class LoginPage extends BasePage {
-  get inputUsername() {
+  get usernameInput() {
     return $("#user-name");
   }
 
-  get inputPassword() {
+  get passwordInput() {
     return $("#password");
   }
 
-  get btnSubmit() {
+  get loginButton() {
     return $("#login-button");
   }
 
-  async getErrorMessage() {
-    return await $(".error-message-container").getText();
+  get errorMessageContainer() {
+    return $(".error-message-container");
   }
 
-  async login(username, password) {
-    await this.inputUsername.setValue(username);
-    await this.inputPassword.setValue(password);
-    await this.btnSubmit.click();
+  async getErrorMessage() {
+    return await this.errorMessageContainer.getText();
+  }
+
+  async inputCredentials(username, password) {
+    await this.usernameInput.setValue(username);
+    await this.passwordInput.setValue(password);
+  }
+
+  async clickLoginButton() {
+    await this.loginButton.click();
   }
 }
 
