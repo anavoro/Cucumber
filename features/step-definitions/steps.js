@@ -6,9 +6,9 @@ Given("the user is on login page", async function () {
 });
 
 When(
-  "the user leaves the username blank and enters the password {string}",
-  async function (password) {
-    await loginPage.inputCredentials("", password);
+  "the user leaves the username {string} blank and enters the password {string}",
+  async function (username, password) {
+    await loginPage.inputCredentials(username, password);
   }
 );
 
