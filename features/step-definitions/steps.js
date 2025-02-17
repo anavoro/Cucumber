@@ -1,25 +1,18 @@
 const { Given, When, Then } = require("@cucumber/cucumber");
 const loginPage = require("../pages/login.page.js");
 
-Given("the user is on login page", async function () {
-  await loginPage.open();
-});
-
-When(
-  "the user leaves the username {string} blank and enters the password {string}",
-  async function (username, password) {
-    await loginPage.inputCredentials(username, password);
+Given(
+  "User is located on the main page of saucedemo website",
+  async function () {
+    await loginPage.open();
   }
 );
 
-When("clicks on Login button", async function () {
-  await loginPage.clickLoginButton();
+When("User clicks {string} button", async function (buttonName) {
+  await loginPage.clickSubmitButton(buttonName);
 });
 
-Then(
-  "the user must remain on login page displaying a message {string}",
-  async function (errorMessage) {
-    const actualError = await loginPage.getErrorMessage();
-    expect(actualError).toBe(errorMessage);
-  }
-);
+Then("User should see {string} error message", async function (errorMessage) {
+  const actualError = await loginPage.getErrorMessage();
+  expect(actualError).toBe(errorMessage);
+});

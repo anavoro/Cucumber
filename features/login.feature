@@ -1,13 +1,8 @@
 Feature: To test the login functionality in "Saucedemo"
 
-Background:
-   Given the user is on login page
+   Background:
+      Given User is located on the main page of saucedemo website
 
-Scenario: The one where user fails to login without filling out the login
-   When the user leaves the username "<username>" blank and enters the password "<password>"
-   And clicks on Login button
-   Then the user must remain on login page displaying a message "<errorMessage>"
-
-Examples:
-| username | password     | errorMessage                       |
-|          | secret_sauce | Epic sadface: Username is required |
+   Scenario: User fails to login without filling out the login form
+      When User clicks "Login" button
+      Then User should see "Epic sadface: Username is required" error message
